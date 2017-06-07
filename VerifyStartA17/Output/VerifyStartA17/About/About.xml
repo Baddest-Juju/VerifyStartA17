@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+
+  <name>Verify Start A17</name>
+
+  <author>scuba156</author>
+
+  <targetVersion>0.17.0</targetVersion>
+
+  <description>
+    A mod that checks your colonists stats before you press the button to start your adventure. This is compatible with EdB's Prepare Carefully Mod.
+
+    Based on Verify Start v1.1.2 by TheUbie
+
+    [Version 1.0]
+  </description>
+</ModMetaData>

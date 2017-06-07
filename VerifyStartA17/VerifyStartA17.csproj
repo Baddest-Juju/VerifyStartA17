@@ -16,7 +16,7 @@
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Output\$rootnamespace$\Assemblies\</OutputPath>
+    <OutputPath>Output\VerifyStartA17\Assemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -24,16 +24,12 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>Output\$rootnamespace$\Assemblies\</OutputPath>
+    <OutputPath>Output\VerifyStartA17\Assemblies\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="%24HugsLibChecker">
-      <HintPath>..\..\..\..\GitHub\Source\Repos\RimworldHugsLibChecker\Mods\HugsLibChecker\Assemblies\$HugsLibChecker.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="0Harmony">
       <HintPath>..\..\..\..\GitHub\Source\Repos\RimworldHugsLib\Mods\HugsLib\Assemblies\0Harmony.dll</HintPath>
     </Reference>
@@ -41,8 +37,8 @@
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="HugsLib">
-      <HintPath>..\..\..\..\GitHub\Source\Repos\RimworldHugsLib\Mods\HugsLib\Assemblies\HugsLib.dll</HintPath>
+    <Reference Include="EdBPrepareCarefully">
+      <HintPath>..\..\..\..\..\Desktop\EdBPrepareCarefully.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -57,17 +53,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Source\Main.cs" />
+    <Compile Include="Source\ColonistConfiguration.cs" />
+    <Compile Include="Source\Configuration.cs" />
+    <Compile Include="Source\ConfigurationLine.cs" />
+    <Compile Include="Source\Patches\ConfigureStartingPawns_Patches\CanDoNext_Patch.cs" />
+    <Compile Include="Source\UI\Dialog_rolling.cs" />
+    <Compile Include="Source\enumIsUsing.cs" />
+    <Compile Include="Source\UI\Page_VerifyStartAutoRoll.cs" />
+    <Compile Include="Source\UI\Page_VerifyStartConfiguration.cs" />
+    <Compile Include="Source\UI\Page_VerifyStartFailed.cs" />
+    <Compile Include="Source\ConfigureStartingPawns_Controller.cs" />
+    <Compile Include="Source\Patches\ConfigureStartingPawns_Patches\DoWindowContents_Patch.cs" />
+    <Compile Include="Source\Patches\ConfigureStartingPawns_Patches\PreOpen_Patch.cs" />
+    <Compile Include="Source\Patches\HarmonyPatcher.cs" />
+    <Compile Include="Source\SkillCheckRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Source\VerifyStart.cs" />
+    <Compile Include="Source\VerifyStartWarning.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Output\%24rootnamespace%24\Assemblies\" />
-    <Folder Include="Source\Patches\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Output\$rootnamespace$\About\About.xml" />
-    <Content Include="Output\$rootnamespace$\Languages\English\keyed\English.xml" />
-    <Content Include="Output\$rootnamespace$\Languages\English\LanguageInfo.xml" />
+    <Content Include="Output\VerifyStartA17\About\About.xml" />
+    <Content Include="Output\VerifyStartA17\About\Preview.png" />
+    <Content Include="Output\VerifyStartA17\Assemblies\0Harmony.dll" />
+    <Content Include="Output\VerifyStartA17\Assemblies\VerifyStartA17.dll" />
+    <Content Include="Output\VerifyStartA17\Defs\Scenarios\ScenParts_Fixed.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
