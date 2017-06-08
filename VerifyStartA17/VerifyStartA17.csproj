@@ -77,7 +77,6 @@
     <Content Include="Output\VerifyStartA17\About\Preview.png" />
     <Content Include="Output\VerifyStartA17\Assemblies\0Harmony.dll" />
     <Content Include="Output\VerifyStartA17\Assemblies\VerifyStartA17.dll" />
-    <Content Include="Output\VerifyStartA17\Defs\Scenarios\ScenParts_Fixed.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
