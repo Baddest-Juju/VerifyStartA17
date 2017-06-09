@@ -7,18 +7,25 @@ using Verse;
 namespace VerifyStartA17.Patches {
 
     public static class HarmonyPatcher {
-        private static readonly string EdbPrepareCarefullyName = "preparecarefully";
-        private static readonly string[] EdbPrepareCarefullySteamID = new string[] { "735106432", "838528063", "844988411", };
+        private static readonly string[] EdbPrepareCarefullyNames = new string[] { "edb prepare carefully", "preparecarefully" };
+        private static readonly string[] EdbPrepareCarefullySteamIDs = new string[] { "735106432", "838528063", "844988411", };
 
         internal static void ApplyPatches() {
-            List<ModMetaData> activeMods = ModsConfig.ActiveModsInLoadOrder.ToList().FindAll(m => m.enabled);
-
-            if (activeMods != null && activeMods.Find(mod => mod.Name.ToLower().Contains(EdbPrepareCarefullyName) | mod.Identifier.ToLower().Contains(EdbPrepareCarefullyName) | EdbPrepareCarefullySteamID.Contains(mod.Identifier)) == null) {
+            if (PrepareCarefullyActive()) {
                 PatchAllOriginalPages();
             }
             else {
                 PatchAllPrepareCarefullyPages();
             }
+        }
+
+        private static bool PrepareCarefullyActive() {
+            List<ModMetaData> activeMods = ModsConfig.ActiveModsInLoadOrder.ToList().FindAll(m => m.enabled);
+
+            return activeMods != null && activeMods.Find(mod => EdbPrepareCarefullyNames.Contains(mod.Name.ToLower()) ||
+                                            EdbPrepareCarefullyNames.Contains(mod.Name.Replace(" ", "").ToLower()) ||
+                                            EdbPrepareCarefullySteamIDs.Contains(mod.Identifier) ||
+                                            (EdbPrepareCarefullySteamIDs.Contains(mod.GetPublishedFileId().m_PublishedFileId.ToString()))) == null;
         }
 
         private static void PatchAllPrepareCarefullyPages() {
