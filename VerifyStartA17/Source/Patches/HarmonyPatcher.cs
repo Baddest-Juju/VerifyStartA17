@@ -7,13 +7,13 @@ using Verse;
 namespace VerifyStartA17.Patches {
 
     public static class HarmonyPatcher {
-        private static readonly string EdbPrepareCarefullyName = "EdbPrepareCarefully";
+        private static readonly string EdbPrepareCarefullyName = "preparecarefully";
         private static readonly string[] EdbPrepareCarefullySteamID = new string[] { "735106432", "838528063", "844988411", };
 
         internal static void ApplyPatches() {
             List<ModMetaData> activeMods = ModsConfig.ActiveModsInLoadOrder.ToList().FindAll(m => m.enabled);
 
-            if (activeMods != null && activeMods.Find(mod => mod.Name == EdbPrepareCarefullyName | mod.Identifier == EdbPrepareCarefullyName | EdbPrepareCarefullySteamID.Contains(mod.Identifier)) == null) {
+            if (activeMods != null && activeMods.Find(mod => mod.Name.ToLower().Contains(EdbPrepareCarefullyName) | mod.Identifier.ToLower().Contains(EdbPrepareCarefullyName) | EdbPrepareCarefullySteamID.Contains(mod.Identifier)) == null) {
                 PatchAllOriginalPages();
             }
             else {
