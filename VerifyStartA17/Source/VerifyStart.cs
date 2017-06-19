@@ -3,6 +3,7 @@ using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
 using VerifyStartA17.Patches;
@@ -20,7 +21,7 @@ namespace VerifyStartA17 {
         public VerifyStart(ModContentPack modContentPack) : base(modContentPack) {
             Instance = this;
 
-            HarmonyPatcher.ApplyPatches();
+            HarmonyInst.PatchAll(Assembly.GetExecutingAssembly());
         }
 
         public List<ColonistConfiguration> ColonistConfig {
